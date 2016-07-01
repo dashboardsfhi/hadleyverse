@@ -149,7 +149,7 @@ RUN install2.r --error \
   && r -e 'remotes::install_github("wesm/feather/R")' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
-
+RUN R -e "devtools::install_github('raubreywhite/RAWmisc')"
 
 ## httr authentication uses this port
 EXPOSE 1410
