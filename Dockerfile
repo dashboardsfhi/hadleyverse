@@ -149,7 +149,13 @@ RUN install2.r --error \
   && r -e 'remotes::install_github("wesm/feather/R")' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
+# Richards additions
 RUN R -e "devtools::install_github('raubreywhite/RAWmisc')"
+
+RUN install2.r --error \
+    -r "https://cran.rstudio.com" \
+    deSolve \
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 ## httr authentication uses this port
 EXPOSE 1410
