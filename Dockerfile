@@ -145,6 +145,7 @@ RUN install2.r --error \
     V8 \
     withr \
     XML \
+    ggrepel \
   && r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
   && r -e 'remotes::install_github("wesm/feather/R")' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
