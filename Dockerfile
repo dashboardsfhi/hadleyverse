@@ -27,7 +27,7 @@ RUN apt-get update \
 
 ## Install some external dependencies. 
 RUN apt-get update \
-  && apt-get install -yf --no-install-recommends -t unstable \
+  && apt-get install -yf --no-install-recommends \
     default-jdk \
     default-jre \
     gdal-bin \
