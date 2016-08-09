@@ -152,6 +152,9 @@ RUN install2.r --error \
 
 # Richards additions
 RUN R -e "devtools::install_github('raubreywhite/RAWmisc')"
+RUN apt-get update \
+  && apt-get install -y sshpass
+
 
 RUN install2.r --error \
     -r "https://cran.rstudio.com" \
