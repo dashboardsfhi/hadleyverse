@@ -27,7 +27,7 @@ RUN apt-get update \
 
 ## Install some external dependencies. 
 RUN apt-get update \
-  && apt-get install -yf --no-install-recommends \
+  && apt-get install -y --no-install-recommends -t unstable \
     default-jdk \
     default-jre \
     gdal-bin \
@@ -35,7 +35,6 @@ RUN apt-get update \
     libatlas-base-dev \
     libcairo2-dev \
     libhunspell-dev \
-    libgsl0ldbl \
     libgsl0-dev \
     libgdal-dev \
     libgeos-dev \
@@ -90,6 +89,7 @@ RUN install2.r --error \
     rversions \
     testthat \
     tidyr \
+    servr \
     shiny \
     stringr \
     svglite \
@@ -118,6 +118,7 @@ RUN install2.r --error \
     hexbin \
     Hmisc \
     htmlwidgets \
+    hunspell \
     jpeg \
     Lahman \
     lattice \
@@ -147,6 +148,7 @@ RUN install2.r --error \
     withr \
     XML \
     ggrepel \
+    deSolve \
   && r -e 'source("https://raw.githubusercontent.com/MangoTheCat/remotes/master/install-github.R")$value("mangothecat/remotes")' \
   && r -e 'remotes::install_github("wesm/feather/R")' \
   && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
@@ -156,11 +158,6 @@ RUN R -e "devtools::install_github('raubreywhite/RAWmisc')"
 RUN apt-get update \
   && apt-get install -y sshpass
 
-
-RUN install2.r --error \
-    -r "https://cran.rstudio.com" \
-    deSolve \
-    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 ## httr authentication uses this port
 EXPOSE 1410
